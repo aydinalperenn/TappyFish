@@ -30,9 +30,9 @@ public class LeftMovement : MonoBehaviour
 
         if (gameObject.CompareTag("Ground"))
         {
-            if (transform.position.x <= -groundWidht)
+            if (transform.position.x <= -groundWidht-4.25)
             {
-                transform.position = new Vector2(transform.position.x + 2 * groundWidht, transform.position.y);
+                transform.position = new Vector2(transform.position.x + 2.98f * groundWidht, transform.position.y);
             }
         }
         else if (gameObject.CompareTag("Obstacle"))
