@@ -17,7 +17,6 @@ public class Fish : MonoBehaviour
     SpriteRenderer sp;
     Animator anim;
     [SerializeField] private AudioSource swim, hit, point;
-    [SerializeField] private Button btnAboutMe;
 
     bool touchedGround;
     void Start()
