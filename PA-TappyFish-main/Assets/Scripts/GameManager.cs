@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class GameManager : MonoBehaviour
     public GameObject getReadyImg;
     public GameObject score;
     public static int gameScore;
+
+    [SerializeField] private Button btnAboutMe;
+
     private void Awake()
     {
         bottomLeft = Camera.main.ScreenToWorldPoint(new Vector2(0,0));
@@ -27,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         gameScore = score.GetComponent<Score>().GetScore();
+        btnAboutMe.gameObject.SetActive(true);
         gameOverPanel.SetActive(true);
         score.SetActive(false);
     }

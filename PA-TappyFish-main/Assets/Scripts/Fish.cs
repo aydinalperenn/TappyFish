@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Fish : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Fish : MonoBehaviour
     SpriteRenderer sp;
     Animator anim;
     [SerializeField] private AudioSource swim, hit, point;
+    [SerializeField] private Button btnAboutMe;
 
     bool touchedGround;
     void Start()
@@ -36,24 +38,24 @@ public class Fish : MonoBehaviour
         FishRotation();
     }
 
+    public void StartGame()
+    {
+        _rb.gravityScale = 5f;
+        _rb.velocity = Vector2.zero;
+        _rb.velocity = new Vector2(_rb.velocity.x, speed);
+        obstacleSpawner.InstantiateObstacle();
+        gameManager.GameHasStarted();
+    }
     void FishSwim()
     {
         if (Input.GetMouseButtonDown(0) && GameManager.gameOver == false)
         {
-            swim.Play();
-            if (GameManager.gameStarted == false)
+            if (GameManager.gameStarted != false)
             {
-                _rb.gravityScale = 5f;
+                swim.Play();
                 _rb.velocity = Vector2.zero;
                 _rb.velocity = new Vector2(_rb.velocity.x, speed);
-                obstacleSpawner.InstantiateObstacle();
-                gameManager.GameHasStarted();
             }
-            else
-            {
-                _rb.velocity = Vector2.zero;
-                _rb.velocity = new Vector2(_rb.velocity.x, speed);
-            }    
         }
     }
 
